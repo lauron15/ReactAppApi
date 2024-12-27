@@ -11,6 +11,7 @@ namespace ReactAppApi.Server.Models
         [Column("id")]
         public int Id { get; set; }
 
+
         [Column("Symbol")]
         public string Symbol { get; set; } = string.Empty;
 

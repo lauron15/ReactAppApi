@@ -14,6 +14,7 @@ function App() {
             <thead>
                 <tr>
 
+
                     <th>Date</th>
                     <th>Temp. (C)</th>
                     <th>Temp. (F)</th>
