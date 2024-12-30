@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ReactAppApi.Server.Data;
 using ReactAppApi.Server.DTOs.StockDto;
@@ -30,6 +31,7 @@ namespace ReactAppApi.Server.Controllers
         //and helps to create modular, testable, and maintainable systems.
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
         {
             if (!ModelState.IsValid) //data validation (For performing data validation)
