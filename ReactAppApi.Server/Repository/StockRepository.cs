@@ -1,12 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ReactAppApi.Server.Data;
 using ReactAppApi.Server.DTOs.StockDto;
+using ReactAppApi.Server.Helpers;
 using ReactAppApi.Server.Interfaces;
 using ReactAppApi.Server.Models;
 
 namespace ReactAppApi.Server.Repository
 {
-    public class StockRepository :IStockRepository
+    public class StockRepository : IStockRepository
     {
         private readonly ApplicationDBContext _context;
         public StockRepository(ApplicationDBContext context)
@@ -24,7 +25,7 @@ namespace ReactAppApi.Server.Repository
         public async Task<Stock> DeleteByIdAsync(int id)
         {
             var stockModel = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
-            if (stockModel == null) 
+            if (stockModel == null)
             {
                 return null;
             }
@@ -32,13 +33,27 @@ namespace ReactAppApi.Server.Repository
             _context.Stocks.Remove(stockModel);
             await _context.SaveChangesAsync();
             return stockModel;
-        
+
         }
 
-        public async Task<List<Stock>> GetAllAsync() 
-        
-       {
-           return await _context.Stocks.Include(c=>c.Comments).ToListAsync();
+        public async Task<List<Stock>> GetAllAsync(QueryObject query) 
+
+        {
+            var stock =  _context.Stocks.Include(c => c.Comments).AsQueryable();
+            if (!string.IsNullOrWhiteSpace(query.CompanyName)) 
+            {
+                stock = stock.Where(s => s.CompanyName.Contains(query.CompanyName));
+            
+            }
+
+            if(!string.IsNullOrWhiteSpace(query.Symbol))
+            {
+                stock = stock.Where(s => s.Symbol.Contains(query.Symbol));
+            }
+
+            return await stock.ToListAsync();
+
+            //return await _context.Stocks.Include(c => c.Comments).ToListAsync(); also, this one is the method before filtering thing. 
 
         }
 
@@ -50,7 +65,7 @@ namespace ReactAppApi.Server.Repository
         public async Task<Stock> UpdateByIdAsync(int id, UpdateStockDto stockDto)
         {
             var existingStock = await _context.Stocks.FirstOrDefaultAsync(x => x.Id == id);
-             if (existingStock == null)
+            if (existingStock == null)
             {
                 return null;
             }
@@ -67,7 +82,7 @@ namespace ReactAppApi.Server.Repository
             return existingStock;
         }
 
-       public Task<bool> StockExists(int id)
+        public Task<bool> StockExists(int id)
         {
             return _context.Stocks.AnyAsync(s => s.Id == id);
         }

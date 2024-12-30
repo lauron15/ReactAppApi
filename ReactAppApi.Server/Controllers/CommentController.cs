@@ -2,7 +2,7 @@
 using ReactAppApi.Server.DTOs.Comments;
 using ReactAppApi.Server.Interfaces;
 using ReactAppApi.Server.Mappers.CommentMappers;
-using ReactAppApi.Server.Models;
+
 
 namespace ReactAppApi.Server.Controllers
 {
@@ -20,7 +20,7 @@ namespace ReactAppApi.Server.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll() //fir a coding without the filtering thing, just take sure to make as this one. 
         {
             if (!ModelState.IsValid) //data validation (For performing data validation)
                 return BadRequest(ModelState); //data validation (For perfoming data validation) 
@@ -82,7 +82,7 @@ namespace ReactAppApi.Server.Controllers
 
 
         [HttpDelete("{id:int}")]
-        //("{id:int}")] validação, atribuitos devem ser obrigatoriamente inteiros. 
+        //("{id:int}")] validation, attributes must be strictly integers.
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             if (!ModelState.IsValid) //data validation (For performing data validation)

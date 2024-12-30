@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using ReactAppApi.Server.Data;
 using ReactAppApi.Server.DTOs.StockDto;
+using ReactAppApi.Server.Helpers;
 using ReactAppApi.Server.Interfaces;
 using ReactAppApi.Server.Mappers.StockMappers;
 
@@ -23,22 +24,37 @@ namespace ReactAppApi.Server.Controllers
         }
 
 
-        //No C#, o padrão Repository é usado para abstrair e encapsular o acesso aos dados em aplicações.
-        //Ele é uma camada intermediária entre a lógica de negócio e a fonte de dados (como um banco de dados).
-        //Essa abordagem segue os princípios do Domain-Driven Design
-        //(DDD) e ajuda a criar sistemas modulares, testáveis e fáceis de manter.
+        //In C#, the Repository pattern is used to abstract and encapsulate data access in applications.
+        //It acts as an intermediary layer between the business logic and the data source (such as a database).
+        //This approach follows the principles of Domain-Driven Design (DDD)
+        //and helps to create modular, testable, and maintainable systems.
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] QueryObject query)
         {
             if (!ModelState.IsValid) //data validation (For performing data validation)
                 return BadRequest(ModelState); //data validation (For perfoming data validation) 
 
-            var stocks = await _stockRepo.GetAllAsync();
+            var stocks = await _stockRepo.GetAllAsync(query);
+            var stocksDto = stocks.Select(s => s.ToStockDto());
             return Ok(stocks);
 
-            
+
         }
+
+        // This is the method getall before the filtering modifications. 
+
+        //[HttpGet] 
+        //  public async Task<IActionResult> GetAll()
+        // {
+        //  if (!ModelState.IsValid) //data validation (For performing data validation)
+        // return BadRequest(ModelState); //data validation (For perfoming data validation) 
+
+        // var stocks = await _stockRepo.GetAllAsync();
+        // return Ok(stocks);
+
+
+        //  }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id)
