@@ -36,24 +36,38 @@ namespace ReactAppApi.Server.Repository
 
         }
 
-        public async Task<List<Stock>> GetAllAsync(QueryObject query) 
+        public async Task<List<Stock>> GetAllAsync(QueryObject query)
 
         {
-            var stock =  _context.Stocks.Include(c => c.Comments).AsQueryable();
-            if (!string.IsNullOrWhiteSpace(query.CompanyName)) 
+            var stock = _context.Stocks.Include(c => c.Comments).AsQueryable();
+            if (!string.IsNullOrWhiteSpace(query.CompanyName))
             {
                 stock = stock.Where(s => s.CompanyName.Contains(query.CompanyName));
-            
+
             }
 
-            if(!string.IsNullOrWhiteSpace(query.Symbol))
+            if (!string.IsNullOrWhiteSpace(query.Symbol))
             {
                 stock = stock.Where(s => s.Symbol.Contains(query.Symbol));
             }
 
-            return await stock.ToListAsync();
+            if (!string.IsNullOrWhiteSpace(query.SortBy))
+            {
+                if (query.SortBy.Equals("Symbol", StringComparison.OrdinalIgnoreCase))
+                {
+                    stock = query.IsDecsending ? stock.OrderByDescending(s => s.Symbol) : stock.OrderBy(s => s.Symbol);
+                }
+            }
 
+            var skipNumber = (query.PageNumber -1) * query.PageSize;
+
+            return await stock.Skip(skipNumber).Take(query.PageSize).ToListAsync(); //now we're able to choose the number of items we would like to see on the pages. 
+
+            // return await _context.Users.ToListAsync(); and this one is the method on it's core. 
             //return await _context.Stocks.Include(c => c.Comments).ToListAsync(); also, this one is the method before filtering thing. 
+
+
+
 
         }
 

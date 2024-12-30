@@ -172,9 +172,11 @@ L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\obj\Debug\net8.0\refint\R
 L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\obj\Debug\net8.0\ReactAppApi.Server.pdb
 L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\obj\Debug\net8.0\ReactAppApi.Server.genruntimeconfig.cache
 L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\obj\Debug\net8.0\ref\ReactAppApi.Server.dll
-L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
 L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\bin\Debug\net8.0\Newtonsoft.Json.dll
 L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
 L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\obj\Debug\net8.0\ReactAppApi.Server.sourcelink.json
+L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
