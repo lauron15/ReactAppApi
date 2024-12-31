@@ -20,9 +20,26 @@ namespace ReactAppApi.Server.Data
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
+        public DbSet<Portfolio> Portfolios { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder builder) //token and verification
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<Portfolio>(x => x.HasKey(p => new { p.AppUserId, p.StockId })); //essa parte aqui não é sobre o token, mas só da parte de portgólios que vamos criar.
+
+            builder.Entity<Portfolio>()
+                .HasOne(u => u.AppUserId)
+                .WithMany(u => Portfolios)
+                .HasForeignKey(p => p.AppUserId);
+
+
+            builder.Entity<Portfolio>()
+                .HasOne(u => u.Stock)
+                .WithMany(u => Portfolios)
+                .HasForeignKey(p => p.StockId);
+
 
             List<IdentityRole> roles = new List<IdentityRole>
             {

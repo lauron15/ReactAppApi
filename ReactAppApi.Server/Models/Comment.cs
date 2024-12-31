@@ -1,5 +1,8 @@
-﻿namespace ReactAppApi.Server.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ReactAppApi.Server.Models
 {
+    [Table("Comments")]
     public class Comment
     {
 
