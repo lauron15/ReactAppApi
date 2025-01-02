@@ -98,6 +98,8 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<IPortfolioRepository, PortolioRepository>();
 
 // Depency injection for tokenService
 builder.Services.AddScoped<ITokenService, TokenService>();

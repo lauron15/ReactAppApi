@@ -27,18 +27,16 @@ namespace ReactAppApi.Server.Data
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<Portfolio>(x => x.HasKey(p => new { p.AppUserId, p.StockId })); //essa parte aqui não é sobre o token, mas só da parte de portgólios que vamos criar.
-
             builder.Entity<Portfolio>()
-                .HasOne(u => u.AppUserId)
-                .WithMany(u => Portfolios)
+                .HasOne(u => u.AppUser)
+                .WithMany(u => u.Portfolios)
                 .HasForeignKey(p => p.AppUserId);
-
-
+           
             builder.Entity<Portfolio>()
                 .HasOne(u => u.Stock)
-                .WithMany(u => Portfolios)
+                .WithMany(u => u.Portfolios)
                 .HasForeignKey(p => p.StockId);
+
 
 
             List<IdentityRole> roles = new List<IdentityRole>
@@ -46,17 +44,19 @@ namespace ReactAppApi.Server.Data
             new IdentityRole
             {
                  Id = "Admin",
-Name= "Admin",
-NormalizedName="ADMIN"
+                 Name= "Admin",
+                 NormalizedName="ADMIN"
 
             },
 
 
+
               new IdentityRole
             {
-Id = "User", // Adicione o Id aqui
-    Name = "User",
-    NormalizedName = "USER"
+                Id = "User", // Adicione o Id aqui
+                Name = "User",
+                NormalizedName = "USER"
+
 
             },
 

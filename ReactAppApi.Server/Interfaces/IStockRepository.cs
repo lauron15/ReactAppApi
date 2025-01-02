@@ -12,6 +12,8 @@ namespace ReactAppApi.Server.Interfaces
        // Task<List<Stock>> GetAllAsync(); the right method without filtering
         Task<Stock?> GetByIdAsync(int id); //first or default can be null
 
+        Task<Stock?> GetBySymbolAsync(string symbol);
+
         Task<Stock> CreateAsync(Stock stockModel);
 
         Task<Stock> UpdateByIdAsync(int id, UpdateStockDto stockDto);

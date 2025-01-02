@@ -179,4 +179,5 @@ L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\bin\Debug\net8.0\Newtonso
 L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\obj\Debug\net8.0\ReactAppApi.Server.sourcelink.json
 L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\bin\Debug\net8.0\BCrypt.Net-Next.dll
 L:\ProjetosDev\StockAPI\ReactAppApi\ReactAppApi.Server\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

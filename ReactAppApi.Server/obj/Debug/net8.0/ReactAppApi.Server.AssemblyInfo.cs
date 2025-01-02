@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ReactAppApi.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3da16a20750a9d26cc0e35cb062a3ba6df9f8f68")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d1b1f6a8d7c4bc35817e0eacc11899b7735062a8")]
 [assembly: System.Reflection.AssemblyProductAttribute("ReactAppApi.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ReactAppApi.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
